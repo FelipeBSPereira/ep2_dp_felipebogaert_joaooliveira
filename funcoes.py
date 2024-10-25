@@ -43,6 +43,7 @@ def afundados(frota, tabuleiro):
 
     for posicoes in frota.values():
         for posicao in posicoes:
+            afundado = True
             for linha, coluna in posicao:
                 if tabuleiro[linha][coluna] != 'X':
                     afundado = False
