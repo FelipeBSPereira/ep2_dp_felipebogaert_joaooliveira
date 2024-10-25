@@ -51,3 +51,48 @@ def afundados(frota, tabuleiro):
                 navios_afundados += 1
 
     return navios_afundados
+
+
+def criar_matriz():
+    tab = []
+    for i in range(10):
+        linha = []
+        for j in range(10):
+            linha.append(0)
+        tab.append(linha)
+    return tab 
+
+#def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    #posicoes_novas = define_posicoes(linha, coluna, orientacao, tamanho)
+    #tab = []
+    #for i in range(10):
+        #linha = []
+        #for j in range(10):
+            #linha.append(0)
+        #tab.append(linha)
+    #if posicoes_novas > len(tab):
+        #return False
+    #for tipo_navio, navios in frota.items():
+        #for navio in navios:
+            #for pos in navio:
+                #if pos in posicoes_novas:
+                    #return False
+    #return True
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes_novas = define_posicoes(linha, coluna, orientacao, tamanho)
+    for posicao_nova in posicoes_novas:
+        if posicao_nova[0] < 0:
+            return False
+        elif posicao_nova[0] >= 10:
+            return False
+        elif posicao_nova[1] < 0:
+            return False
+        elif posicao_nova[1] >= 10:
+            return False
+    for tipos_navios in frota.values():
+        for navio in tipos_navios:
+            for posicao_nova in navio:
+                if posicao_nova in posicoes_novas:
+                    return False
+    return True
