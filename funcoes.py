@@ -25,4 +25,15 @@ def faz_jogada(tab, linha, coluna):
         tab[linha][coluna] = 'X'
     return tab
 
-
+def posiciona_frota(frota):
+    tab = []
+    for i in range(10):
+        linha = []
+        for j in range(10):
+            linha.append(0)
+        tab.append(linha)
+    for posicoes in frota.values():
+        for posicao in posicoes:
+            for linha, coluna in posicao:
+                tab[linha][coluna] = 1
+    return tab
